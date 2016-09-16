@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link href="styles.css" rel="stylesheet">
+        <title>Contacts</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Your Contacts</h1>
+            <ul>
+                {% for contact in contacts %}
+                    <li>{{ contact.getFName }} {{contact.getLName }} <br>
+                        Phone: {{ contact.getPhone }} <br>
+                        Email address: {{ contact.getEmail }}<br>
+                        Address: {{ contact.getStreet }}, {{ contact.getCity }}  {{ contact.getState }}, {{ contact.getZip }} <br>
+                        {{ contact.getImg }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <form action="/addName">
+                <button type="submit">Add Contact</button>
+            </form>
+            <form action="/clearAll">
+                <button type="submit">Delete All</button>
+            </form>
+            
+            <form action="/searchResults" class="form-inline">
+                <h2>Search for a contact:</h2>
+                <div class="form-group">
+                    <label for="searchName">Enter a First or Last Name</label>
+                    <input id="searchName" name="searchName" type="text" class="form-control">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -15,6 +15,16 @@
         return $app['twig']->render('contacts.html.twig', array('contacts' => Contact::getAll()));
     });
 
+    $app->get("/searchResults", function() use ($app) {
+        $matches = array();
+        foreach (Contact::getAll() as $contact) {
+            if (strtoupper($contact->getFName()) == strtoupper($_GET['searchName']) || strtoupper($contact->getLName()) == strtoupper($_GET['searchName']))
+            {
+                array_push($matches, $contact);
+            }
+        }
+        return $app['twig']->render('search.html.twig', array('matches' => $matches));
+    });
 
     return $app;
 ?>
