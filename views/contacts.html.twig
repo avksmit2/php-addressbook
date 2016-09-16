@@ -2,12 +2,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <link href="styles.css" rel="stylesheet">
         <title>Contacts</title>
     </head>
     <body>
         <div class="container">
-            <h1>Your Contacts</h1>
+            <h1 class="text-center well">Your Contacts</h1>
             <ul>
                 {% for contact in contacts %}
                     <li>{{ contact.getFName }} {{contact.getLName }} <br>
@@ -18,13 +17,18 @@
                     </li>
                 {% endfor %}
             </ul>
-
-            <form action="/addName">
-                <button type="submit">Add Contact</button>
-            </form>
-            <form action="/clearAll">
-                <button type="submit">Delete All</button>
-            </form>
+            <div class="row">
+                <div class="col-sm-2">
+                    <form action="/addName">
+                        <button type="submit" class="btn btn-info">Add Contact</button>
+                    </form>
+                </div>
+                <div class="col-sm-2">
+                    <form action="/clearAll">
+                        <button type="submit" class="btn btn-danger">Delete All</button>
+                    </form>
+                </div>
+            </div>
 
             <form action="/searchResults" class="form-inline" method="post">
                 <h2>Search for a contact:</h2>
@@ -32,7 +36,7 @@
                     <label for="searchName">Enter a First or Last Name</label>
                     <input id="searchName" name="searchName" type="text" class="form-control">
                 </div>
-                <button type="submit">Search</button>
+                <button type="submit" class="btn btn-warning">Search</button>
             </form>
         </div>
     </body>

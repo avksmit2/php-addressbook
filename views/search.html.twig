@@ -6,7 +6,7 @@
     <body>
         <div class="container">
             {% if matches is not empty %}
-                <h1>Here are the contacts matching your search:</h1>
+                <h1 class="well text-center">Here are the contacts matching your search:</h1>
                 <ul>
                     {% for contact in matches %}
                         <li>{{ contact.getFName }} {{contact.getLName }} <br>
@@ -18,9 +18,9 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                <h1>There are no contacts matching your search criterion.</h1>
+                <h1 class="well text-center">There are no contacts matching your search criterion.</h1>
             {% endif %}
-            <p><a href="/">View your list of contacts.</a></p>
+            <h3><a href="/">View your list of contacts.</a></h3>
         </div>
     </body>
 </html>
