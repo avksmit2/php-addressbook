@@ -15,17 +15,6 @@
         return $app['twig']->render('contacts.html.twig', array('contacts' => Contact::getAll()));
     });
 
-    $app->get("/searchResults", function() use ($app) {
-        $matches = array();
-        foreach (Contact::getAll() as $contact) {
-            if (strtoupper($contact->getFName()) == strtoupper($_GET['searchName']) || strtoupper($contact->getLName()) == strtoupper($_GET['searchName']))
-            {
-                array_push($matches, $contact);
-            }
-        }
-        return $app['twig']->render('search.html.twig', array('matches' => $matches));
-    });
-
     $app->get("/addName", function() use ($app) {
         return $app['twig']->render('addContact.html.twig');
     });
@@ -34,6 +23,12 @@
         $newContact = new Contact($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $_POST['street'], $_POST['city'], $_POST['state'], $_POST['zip'], $_POST['img']);
         $newContact->save();
         return $app['twig']->render('showNewContact.html.twig', array('contact' => $newContact));
+    });
+
+    $app->post("/searchResults", function() use ($app) {
+        $matches = Contact::getMatches($_POST['searchName']);
+
+        return $app['twig']->render('search.html.twig', array('matches' => $matches));
     });
 
     $app->get("/clearAll", function() use ($app) {
