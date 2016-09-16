@@ -25,7 +25,7 @@
         }
         return $app['twig']->render('search.html.twig', array('matches' => $matches));
     });
-    
+
     $app->get("/addName", function() use ($app) {
         return $app['twig']->render('addContact.html.twig');
     });
@@ -34,6 +34,11 @@
         $newContact = new Contact($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $_POST['street'], $_POST['city'], $_POST['state'], $_POST['zip'], $_POST['img']);
         $newContact->save();
         return $app['twig']->render('showNewContact.html.twig', array('contact' => $newContact));
+    });
+
+    $app->get("/clearAll", function() use ($app) {
+        Contact::clearAll();
+        return $app['twig']->render('clearAll.html.twig');
     });
 
     return $app;

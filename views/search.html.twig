@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contacts</title>
+    </head>
+    <body>
+        <div class="container">
+            {% if matches is not empty %}
+                <h1>Here are the contacts matching your search:</h1>
+                <ul>
+                    {% for contact in matches %}
+                        <li>{{ contact.getFName }} {{contact.getLName }} <br>
+                            Phone: {{ contact.getPhone }} <br>
+                            Email address: {{ contact.getEmail }}<br>
+                            Address: {{ contact.getStreet }}, {{ contact.getCity }}  {{ contact.getState }}, {{ contact.getZip }} <br>
+                            {{ contact.getImg }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h1>There are no contacts matching your search criterion.</h1>
+            {% endif %}
+            <p><a href="/">View your list of contacts.</a></p>
+        </div>
+    </body>
+</html>
