@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Contacts</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>You created a new contact!</h1>
+            <p>{{ contact.getFName }} {{ contact.getLName }}</p>
+            <p>Email: {{ contact.getEmail }}</p>            
+            <p>Phone: {{ contact.getPhone }}</p>
+            <p>Address: {{ contact.getStreet }}</p>
+            <p>{{ contact.getCity }}, {{ contact.getState }}  {{ contact.getZip }}</p>
+            <p>{{ contact.getImg }}<p>
+            <p><a href="/">View your list of contacts.</a></p>
+        </div>
+    </body>
+</html>
