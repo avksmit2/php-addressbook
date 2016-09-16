@@ -113,6 +113,11 @@ class Contact
         return $this->img;
     }
 
+    function save()
+    {
+        array_push($_SESSION['list_of_contacts'], $this);
+    }
+
     static function getMatches($searchName)
     {
         $matches = array();
@@ -123,11 +128,6 @@ class Contact
             }
         }
         return $matches;
-    }
-
-    function save()
-    {
-        array_push($_SESSION['list_of_contacts'], $this);
     }
 
     static function getAll()
